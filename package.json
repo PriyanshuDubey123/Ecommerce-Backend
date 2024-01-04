@@ -1,5 +1,5 @@
 {
-  "name": "e-commerce-backend",
+  "name": "ecommerce-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,6 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "mongoose": "^8.0.1",
-    "nodemon": "^3.0.1"
+    "mongoose": "^7.1.0"
   }
 }
