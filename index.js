@@ -60,34 +60,6 @@ server.post('/webhook', express.raw({type: 'application/json'}), (request, respo
 });
 
 
-// Payments
-
-
-// This is your test secret API key.
-const stripe = require("stripe")(process.env.STRIPE_SERVER_KEY);
-
-
-server.post("/create-payment-intent", async (req, res) => {
-  const { totalAmount ,orderId} = req.body;
-
-  // Create a PaymentIntent with the order amount and currency
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: totalAmount*100, // for decimal compensation
-    currency: "inr",
-    automatic_payment_methods: {
-      enabled: true,
-    },
-    metadata:{
-      orderId
-    }
-  });
-
-  res.send({
-    clientSecret: paymentIntent.client_secret,
-  });
-});
-
-
 
 
 
@@ -198,6 +170,38 @@ passport.deserializeUser(function (user, cb) {
     return cb(null, user);
   });
 });
+
+// Payments
+
+
+// This is your test secret API key.
+const stripe = require("stripe")(process.env.STRIPE_SERVER_KEY);
+
+
+server.post("/create-payment-intent", async (req, res) => {
+  const { totalAmount ,orderId} = req.body;
+
+  // Create a PaymentIntent with the order amount and currency
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: totalAmount*100, // for decimal compensation
+    currency: "inr",
+    automatic_payment_methods: {
+      enabled: true,
+    },
+    metadata:{
+      orderId
+    }
+  });
+
+  res.send({
+    clientSecret: paymentIntent.client_secret,
+  });
+});
+
+
+
+
+
 
 
 main().catch((err) => console.log(err));
