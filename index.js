@@ -23,8 +23,10 @@ const { User } = require('./model/User');
 const { isAuth, sanitizeUser, cookieExtractor } = require('./services/common');
 const path = require('path');
 const { Order } = require('./model/Order');
+const { Server } = require('http');
 
 console.log(process.env)
+
 
 // Webhook
 
@@ -102,6 +104,8 @@ server.use('/users', isAuth(), usersRouter.router);
 server.use('/auth', authRouter.router);
 server.use('/cart', isAuth(), cartRouter.router);
 server.use('/orders', isAuth(), ordersRouter.router);
+
+
 
 server.get('*', (req, res) =>
   res.sendFile(path.resolve('build', 'index.html'))
