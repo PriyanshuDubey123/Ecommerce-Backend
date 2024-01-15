@@ -30,7 +30,6 @@ console.log(process.env)
 
 // Webhook
 
-// TODO: we will capture actual order after deploying out server live on public URL
 
 const endpointSecret = process.env.ENDPOINT_SECRET;
 
@@ -73,7 +72,7 @@ server.post('/webhook', express.raw({type: 'application/json'}), async(request, 
 
 const opts = {};
 opts.jwtFromRequest = cookieExtractor;
-opts.secretOrKey = process.env.JWT_SECRET_KEY; // TODO: should not be in code;
+opts.secretOrKey = process.env.JWT_SECRET_KEY; 
 
 //middlewares
 

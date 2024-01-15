@@ -1,6 +1,5 @@
 const passport = require("passport")
 const nodemailer = require('nodemailer');
-const { saveEmail } = require("../controller/Auth");
 
 exports.isAuth = (req,res,done)=>{
   return passport.authenticate('jwt');
@@ -24,7 +23,7 @@ const transporter = nodemailer.createTransport({
   secure: false,
   auth: {
     // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-    user: "priyanshudubey131@gmail.com",
+    user: "mernecommerce123@gmail.com",
     pass: process.env.MAIL_PASSWORD,
   },
 });
@@ -33,7 +32,7 @@ const transporter = nodemailer.createTransport({
 
 exports.sendMail = async function({to,subject,html}){
   const info = await transporter.sendMail({
-    from: '"E-Commerce" <priyanshudubey131@gmail.com>', // sender address
+    from: '"E-Commerce" <mernecommerce123@gmail.com>', // sender address
     to: to, // list of receivers
     subject: subject, // Subject line
     text: "Hello world?", // plain text body
@@ -222,7 +221,7 @@ exports.sendMail = async function({to,subject,html}){
           <!-- start copy -->
           <tr>
             <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-              <p style="margin: 0;">Here is a summary of your recent order. If you have any questions or concerns about your order, please <a href="priyanshudubey131@gmail.com">contact us</a>.</p>
+              <p style="margin: 0;">Here is a summary of your recent order. If you have any questions or concerns about your order, please <a href="mernecommerce123@gmail.com">contact us</a>.</p>
             </td>
           </tr>
           <!-- end copy -->
@@ -314,7 +313,7 @@ exports.sendMail = async function({to,subject,html}){
       </td>
     </tr>
     <!-- end receipt address block -->
-    
+
     <tr>
     <td align="center" bgcolor="#D2C7BA" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
     <a href="https://mern-ecommerce-eight-inky.vercel.app/">Continue Shopping</a>
